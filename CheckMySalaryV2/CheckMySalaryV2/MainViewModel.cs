@@ -4,11 +4,11 @@ namespace CheckMySalaryV2
 {
     public class MainViewModel : ViewModelBase
     {
-        private MntsDataItem _selectedLine;
+        private LineViewModel _selectedLine;
         public ObservableCollection<LineViewModel> Lines { get; } = new();       
 
 
-        public MntsDataItem SelectedLine
+        public LineViewModel SelectedLine
         {
             get { return _selectedLine; }
             set

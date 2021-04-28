@@ -54,7 +54,8 @@
             <AppBarButton Icon="Home" Label="Action">
                 <AppBarButton.Flyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem x:Name="AddNewLine" Text="Add new line..." />
+                        <MenuFlyoutItem x:Name="AddNewLine" Text="Add new line..." 
+                                        Click="{x:Bind ViewModel.OnAddENewLineExecute}" />
                     </MenuFlyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
@@ -66,6 +67,8 @@
                Text="{Binding HourlyRate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
         <controls:DataGrid
+            ItemsSource="{x:Bind ViewModel.Lines,Mode=OneWay}"
+            SelectedItem="{x:Bind ViewModel.SelectedLine, Mode=TwoWay}"
             Grid.Row="2"
             x:Name="_datagrid"
             Margin="12"
@@ -89,8 +92,7 @@
             RowDetailsTemplate="{StaticResource RowDetailsTemplate}"
             RowDetailsVisibilityMode="VisibleWhenSelected"
             SelectionMode="Single"
-            RowGroupHeaderPropertyNameAlternative="Range"
-            SelectedItem="{Binding SelectedLine, Mode=TwoWay}">
+            RowGroupHeaderPropertyNameAlternative="Range">
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="Line No." Binding="{Binding LineNo}" Tag="LineNo" />
                 <controls:DataGridTextColumn Header="Regular (hrs)" Binding="{Binding RegularHrs}" Tag="RegularHrs" />
