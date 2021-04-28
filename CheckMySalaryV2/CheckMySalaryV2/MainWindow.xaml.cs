@@ -13,25 +13,12 @@ namespace CheckMySalaryV2
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        //public DataSrc _viewModel2;
-        public MainViewModel _viewModel { get; }
+        public MainViewModel ViewModel { get; }
 
         public MainWindow()
         {
             this.InitializeComponent();
-            _viewModel = new MainViewModel();
-            
-            _datagrid.ItemsSource = _viewModel.Lines;
-            AddNewLine.Click += this.AddNewLine_Click;
-
-        }
-
-        private void AddNewLine_Click(object sender, RoutedEventArgs e)
-        {
-            if (_datagrid != null)
-            {
-                _viewModel.OnAddENewLineExecute();
-            }
+            ViewModel = new MainViewModel();
         }
 
         private async void ShowMsgBox_Click(object sender, RoutedEventArgs e)
